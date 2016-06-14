@@ -1,0 +1,76 @@
+video#bgvid {
+  position: fixed; right: 0; bottom: 0;
+  min-width: 100%; min-height: 50%;
+  width: auto; height: auto; z-index: -100;
+ background-size: cover;
+}
+
+body {
+    font-family: Verdana;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+#quiz {
+    text-indent: 10px;
+    display:none;
+}
+
+.button {
+
+    width: 40px;
+    padding-left:5px;
+    padding-right: 5px;
+    position: relative;
+    float:right;
+    background-color: #DCDCDC;
+    color: black;
+    margin: 0 2px 0 2px;
+}
+
+.button.active {
+    background-color: #F8F8FF;
+    color: #525252;
+}
+
+button {
+    position: relative;
+    float:right;
+}
+
+.button a {
+    text-decoration: none;
+    color: black;
+}
+
+#container {
+
+    width:70%;
+    margin:auto;
+    padding: 0 25px 40px 10px;
+    background-color: #000;
+    opacity: 0.8;
+    border:4px solid #fff;
+    border-radius:10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px #888;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#prev {
+    display:none;
+}
+
+#start {
+    display:none;
+    width: 80px;
+}
