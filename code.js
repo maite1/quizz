@@ -32,18 +32,19 @@
     choices: ['mais pour l univers je n en ai pas encore la certitude','c est pas faux','et la marmotte...','Obiwan Kenobi is back'],
     correctAnswer: 0
   },{
-    question: "comment on fait les bébé?",
+    question: "comment on fait les bébés?",
     choices: ['tu vois cette bouteille de lait...','demande à ta mère' ,'payes d abord','just do it'  ],
     correctAnswer: 0
   },{
     question: "au résultat du quizz allez vous trucider l auteur des questions?",
-    choices: ['oui','avec une hache', 'in ne faut même pas poser la question', 'non'],
+    choices: ['oui','avec une hache', 'il ne faut même pas poser la question', 'non'],
     correctAnswer: 0
   }];
 
   var questionCounter = 0;
   var selections = [];
   var quiz = $('#quiz');
+  var choices =[];
 
 
   displayNext();
@@ -58,7 +59,7 @@
     choose();
 
 
-  if (isNaN(selections[questionCounter])) {
+    if (isNaN(selections[questionCounter])) {
       alert('veuillez répondre');
     } else {
       questionCounter++;
@@ -117,7 +118,7 @@
     return qElement;
   }
 
-
+  // Creation question avec valeur
   function createRadios(index) {
     var radioList = $('<ul>');
     var item;
@@ -131,10 +132,18 @@
     }
     return radioList;
   }
-
-
-  function choose() {
+  function choose(){
     selections[questionCounter] = +$('input[name="answer"]:checked').val();
+    //var classe = ' ';
+
+    //choices[questionCounter] = '<p class="'+classe+'">' + questions[questionCounter].choices[$('input[name="answer"]:checked').val()]+'</p>';
+    if (selections[questionCounter] == questions[questionCounter].correctAnswer){
+      choices[questionCounter] = "<p class='correct'>" + questions[questionCounter].choices[$('input[name="answer"]:checked').val()]+'</p>';
+    }
+    else {
+      choices[questionCounter] = "<p class='error'>" + questions[questionCounter].choices[$('input[name="answer"]:checked').val()]+'</p>';
+    }
+    /*choices = +$toString(questions[questionCounter].choices[selections]);*/
   }
 
 
@@ -166,8 +175,7 @@
       }
     });
   }
-
-
+  // Affichage du score.
   function displayScore() {
     var score = $('<p>',{id: 'question'});
     var numCorrect = 0;
@@ -177,7 +185,7 @@
       }
     }
     score.append('Vous avez ' + numCorrect + ' réponse sur ' +
-                 questions.length + ' de correcte');
+    questions.length + ' de correcte' + choices.join(' '));
     return score;
   }
 })();
