@@ -1,3 +1,4 @@
+//question réponse
 (function() {
   var questions = [{
     question: "quelle est la réponse à la grande question sur la vie l'univers et le reste?",
@@ -13,7 +14,7 @@
     correctAnswer: 2
   }, {
     question: "qui est Voltaire?",
-    choices: ['une tanche', 'un philosophe', 'celui qui a découvert le volt', 'Obiwan Kenobi'],
+    choices: ['une tanche', 'un philosophe', 'le père du volt', 'Obiwan Kenobi'],
     correctAnswer: 1
   }, {
     question: "Si tu gobes une noix de coco...",
@@ -40,13 +41,13 @@
     choices: ['oui','avec une hache', 'il ne faut même pas poser la question', 'non'],
     correctAnswer: 0
   }];
-
+//parametrage des variables
   var questionCounter = 0;
   var selections = [];
   var quiz = $('#quiz');
   var choices =[];
 
-
+//création des événements bouton next
   displayNext();
 
   $('#next').on('click', function (e) {
@@ -58,7 +59,7 @@
     };
     choose();
 
-
+//boite dial si on ne repond pas elle s'affiche
     if (isNaN(selections[questionCounter])) {
       alert('veuillez répondre');
     } else {
@@ -67,7 +68,7 @@
     }
   });
 
-
+//creation evenements  bouton prev
   $('#prev').on('click', function (e) {
     e.preventDefault();
 
@@ -79,7 +80,7 @@
     displayNext();
   });
 
-
+//creation evenements  bouton start
   $('#start').on('click', function (e) {
     e.preventDefault();
 
@@ -92,7 +93,7 @@
     $('#start').hide();
   });
 
-
+//passe à la question suivante
   $('.button').on('mouseenter', function () {
     $(this).addClass('');
   });
@@ -100,7 +101,7 @@
     $(this).removeClass('active');
   });
 
-
+//titre + changement des questions
   function createQuestionElement(index) {
     var qElement = $('<div>', {
       id: 'question'
@@ -134,16 +135,14 @@
   }
   function choose(){
     selections[questionCounter] = +$('input[name="answer"]:checked').val();
-    //var classe = ' ';
 
-    //choices[questionCounter] = '<p class="'+classe+'">' + questions[questionCounter].choices[$('input[name="answer"]:checked').val()]+'</p>';
+
     if (selections[questionCounter] == questions[questionCounter].correctAnswer){
       choices[questionCounter] = "<p class='correct'>" + questions[questionCounter].choices[$('input[name="answer"]:checked').val()]+'</p>';
     }
     else {
       choices[questionCounter] = "<p class='error'>" + questions[questionCounter].choices[$('input[name="answer"]:checked').val()]+'</p>';
     }
-    /*choices = +$toString(questions[questionCounter].choices[selections]);*/
   }
 
 
@@ -175,7 +174,7 @@
       }
     });
   }
-  // Affichage du score.
+  // Affichage du score et reponses
   function displayScore() {
     var score = $('<p>',{id: 'question'});
     var numCorrect = 0;
